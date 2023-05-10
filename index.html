@@ -68,7 +68,8 @@
 
       await player.addModule(...modules)
 
-      player.use(wcam)
+      //player.use(video)
+      player.use(video)
 
       Dom.render(player, "#webar")
 
@@ -138,7 +139,8 @@
 
       //#region Banuba Web AR SDK and Agora Web SDK integration
       const stream = new MediaStreamCapture(player)
-      const video = await AgoraRTC.createCustomVideoTrack({ mediaStreamTrack: stream.getVideoTrack() })
+      //const video = await AgoraRTC.createCustomVideoTrack({ mediaStreamTrack: stream.getVideoTrack() })
+      const video = await AgoraRTC.createCustomVideoTrack({ mediaStreamTrack: stream.getVideoTrack})
       //#endregion
 
       const audio = await AgoraRTC.createMicrophoneAudioTrack()
