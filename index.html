@@ -55,8 +55,8 @@
     ]
 
     ;(async () => {
-      //const wcam = new Webcam({ width: 640, height: 480 })
-      const wcam = new Webcam(video)
+      const wcam = new Webcam({ width: 640, height: 480 })
+      //const wcam = new Webcam(video)
       const [player, modules] = await Promise.all([
         Player.create({
           devicePixelRatio: 1,
