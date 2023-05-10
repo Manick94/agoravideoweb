@@ -55,7 +55,8 @@
     ]
 
     ;(async () => {
-      const wcam = new Webcam({ width: 640, height: 480 })
+      //const wcam = new Webcam({ width: 640, height: 480 })
+      const wcam = new Webcam(video)
       const [player, modules] = await Promise.all([
         Player.create({
           devicePixelRatio: 1,
@@ -68,7 +69,7 @@
 
       await player.addModule(...modules)
 
-      //player.use(video)
+      //player.use(wcam)
       player.use(video)
 
       Dom.render(player, "#webar")
@@ -138,7 +139,7 @@
       //#endregion
 
       //#region Banuba Web AR SDK and Agora Web SDK integration
-      const stream = new MediaStreamCapture(player)
+      const stream = new MediaStreamCapture(video)
       //const video = await AgoraRTC.createCustomVideoTrack({ mediaStreamTrack: stream.getVideoTrack() })
       const video = await AgoraRTC.createCustomVideoTrack({ mediaStreamTrack: stream.getVideoTrack})
       //#endregion
