@@ -45,17 +45,22 @@
   <script src="AgoraAppId.js"></script>
   <script src="BanubaClientToken.js"></script>
   <script type="module">
-    import { Effect, Webcam, Player, Module, Dom, MediaStreamCapture } from "https://cdn.jsdelivr.net/npm/@banuba/webar/dist/BanubaSDK.browser.esm.min.js"
+    import { Effect, Webcam, Player, Module, Dom, MediaStreamCapture, MediaStream } from "https://cdn.jsdelivr.net/npm/@banuba/webar/dist/BanubaSDK.browser.esm.min.js"
 
     const effects = [
       "Glasses",
       "Hipster3",
       "MonsterFactory",
       "test_BG",
-    ]
+    ];
 
-    ;(async () => {
+    //const stream = new MediaStream(
+     // await AgoraRTCRemoteUser.videoTrack
+    //)
+    
+    (async () => {
       const wcam = new Webcam({ width: 640, height: 480 })
+      //const rcam = new AgoraRTCRemoteUser.videoTrack
       //const wcam = new Webcam(video)
       const [player, modules] = await Promise.all([
         Player.create({
@@ -70,7 +75,9 @@
       await player.addModule(...modules)
 
       //player.use(wcam)
-      player.use(video)
+      //player.use(stream)
+      //player.use(video)
+      player.use(client)
 
       Dom.render(player, "#webar")
 
@@ -139,7 +146,7 @@
       //#endregion
 
       //#region Banuba Web AR SDK and Agora Web SDK integration
-      const stream = new MediaStreamCapture(video)
+      const stream = new MediaStreamCapture(player)
       //const video = await AgoraRTC.createCustomVideoTrack({ mediaStreamTrack: stream.getVideoTrack() })
       const video = await AgoraRTC.createCustomVideoTrack({ mediaStreamTrack: stream.getVideoTrack})
       //#endregion
