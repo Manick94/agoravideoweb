@@ -74,10 +74,10 @@
 
       await player.addModule(...modules)
 
-      //player.use(wcam)
+      player.use(wcam)
       //player.use(stream)
       //player.use(video)
-      player.use(client)
+      //player.use(client)
 
       Dom.render(player, "#webar")
 
@@ -112,10 +112,10 @@
 
         const effect = await Effect.preload(`effects/${effectName}.zip`)
 
-        btn.on("click", () => player.applyEffect(effect))
+        btn.on("click", () => client.applyEffect(effect))
         btn.removeClass("loading")
       })
-      $("#reset").on("click", () => player.clearEffect())
+      $("#reset").on("click", () => client.clearEffect())
       //#endregion
       //#endregion
 
