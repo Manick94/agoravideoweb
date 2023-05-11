@@ -112,10 +112,10 @@
 
         const effect = await Effect.preload(`effects/${effectName}.zip`)
 
-        btn.on("click", () => client.applyEffect(effect))
+        btn.on("click", () => player.applyEffect(effect))
         btn.removeClass("loading")
       })
-      $("#reset").on("click", () => client.clearEffect())
+      $("#reset").on("click", () => player.clearEffect())
       //#endregion
       //#endregion
 
